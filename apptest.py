@@ -101,7 +101,7 @@ def start():
             waitingFrame.destroy()
             createChat(Content)
 
-        WebSocket.bindToEvent("ReceiveMessageEvent", changeToChat)
+        WebSocket.bindToEvent("JoinedRoomEvent", changeToChat)
 
 
 

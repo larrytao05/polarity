@@ -3,7 +3,7 @@ import json
 import socket
 from threading import Thread
 
-Address = ("localhost", 16568)
+Address = ("167.172.236.31", 16568)
 Headersize = 10
 WebSocket = socket.socket()
 Running = True
