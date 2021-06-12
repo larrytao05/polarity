@@ -53,11 +53,12 @@ def start():
         topic[0] = currentTopic
         # we need to have the code recognize the user choice for topic and then have that be stored in the "topic" variable
         frame.destroy()
-        frame1 = tk.Frame(root, bg="white")
+        frame1 = tk.Frame(root, bg="#edcad4")
+
         frame1.place(relwidth=1, relheight=1)
         n=0
 
-        opinionlabel = Label(frame1, text="What Are Your Opinions on "+topic[0]+":", font=("Helvetica", 20,), fg="#cf9fff", bg="white",)
+        opinionlabel = Label(frame1, text="What Are Your Opinions on "+topic[0]+":", font=("Helvetica", 20,), fg="#cf9fff", bg="#edcad4",)
         photo5 = PhotoImage(file=r'resources/button (1).png')
         strongAgainst = Button(root, highlightthickness=0, bd=0, image=photo5,
                                command=lambda: waitingScreen(frame1, opinions[0]))
@@ -86,7 +87,7 @@ def start():
 
 
         opinionlabel.pack(side=TOP)
-        returnToStart = Button(frame1, text="Back", padx=10, pady=5, fg="white", bg="#cf9fff", command=start)
+        returnToStart = Button(frame1, text="Back", padx=10, pady=5, fg="#edcad4", bg="#cf9fff", command=start)
         returnToStart.place(x=0, y=0)
 
         mainloop()
@@ -107,12 +108,14 @@ def start():
         opinion[0] = currentOpinion
         oldFrame.destroy()
 
-        waitingFrame = Frame(root, bg="white")
+        waitingFrame = Frame(root, bg="#edcad4")
+
         waitingFrame.place(relwidth=1, relheight=1)
-        waitingLabel = Label(waitingFrame, text="Pairing you with a random person...", font=('Helvetica', 25),fg="#cf9fff", bg="white")
+        waitingLabel = Label(waitingFrame, text="Pairing you with a random person...", font=('Helvetica', 25),fg="#cf9fff", bg="#edcad4")
+
         waitingLabel.pack(side=TOP)
 
-        cancelChat = Button(waitingFrame, text="Cancel", padx=10, pady=5, fg="white", bg="#cf9fff",
+        cancelChat = Button(waitingFrame, text="Cancel", padx=10, pady=5, fg="#edcad4", bg="#cf9fff",
                                   command=lambda: opinionTab(topic[0]))
         cancelChat.place(x=0, y=0)
 
@@ -125,22 +128,24 @@ def start():
 
 
     def createChat(Content):
-        chatFrame = Frame(root, bg="white")
+        chatFrame = Frame(root, bg="#edcad4")
+
         chatFrame.place(relwidth=1, relheight=1)
 
-        chatLabel = Label(chatFrame, text="Discussion", font=('Helvetica', 25),fg="#cf9fff", bg="white")
+        chatLabel = Label(chatFrame, text="Discussion", font=('Helvetica', 25),fg="#cf9fff", bg="#edcad4")
+
         chatLabel.pack(side=TOP)
 
-        exitChat = Button(chatFrame, text="Exit", padx=10, pady=5, fg="white", bg="#cf9fff", command=start)
+        exitChat = Button(chatFrame, text="Exit", padx=10, pady=5, fg="#edcad4", bg="#cf9fff", command=start)
         exitChat.place(x=0, y=50)
 
-        returnToOpinions = Button(chatFrame, text="Back", padx=10, pady=5, fg="white", bg="#cf9fff", command=lambda: opinionTab(topic[0]))
+        returnToOpinions = Button(chatFrame, text="Back", padx=10, pady=5, fg="#edcad4", bg="#cf9fff", command=lambda: opinionTab(topic[0]))
         returnToOpinions.place(x=0,y=0)
 
-        enterChat = Text(chatFrame, width=75, height=5, fg="white", bg="#cf9fff")
+        enterChat = Text(chatFrame, width=75, height=5, fg="#edcad4", bg="#cf9fff")
         enterChat.place(relx=0.5, rely=0.5, anchor='center', x=0, y=200, width=300, height=50)
 
-        messageDisplay = Text(chatFrame, width=75, height=20, fg="white", bg="#cf9fff")
+        messageDisplay = Text(chatFrame, width=75, height=20, fg="#edcad4", bg="#cf9fff")
         messageDisplay.place(relx=0.5, rely=0.5, anchor='center', width=300, height=350)
         messageDisplay.config(state=DISABLED)
 
@@ -187,7 +192,8 @@ def start():
 
 
 
-    frame = tk.Frame(root, bg="white")
+    frame = tk.Frame(root, bg="#edcad4")
+
     frame.place(relwidth=1, relheight=1)
     frame.tkraise()
 
@@ -196,7 +202,8 @@ def start():
     logo.place(x=(960/2)-(431/2), rely=0)
 
     label1 = Label(frame, text="Current Discussion Topics:",
-                   font=("Helvetica", 20), fg="#cf9fff", bg="white", anchor=N)
+                   font=("Helvetica", 20), fg="#cf9fff", bg="#edcad4")
+
     label1.place(relx=0.5, y=350)
 
     issue1 = PhotoImage(file=r'../polarity/resources/babies.png')
