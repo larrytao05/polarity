@@ -16,11 +16,11 @@ root.minsize(height=540, width=960)
 issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Taxes", "Vaccines"]
 opinions = ["Strongly Against", "Against", "Neutral", "Support", "Strongly Support"]
 numberValues = {
-    "strongAgainst": -2,
+    "Strong Against": -2,
     "Against": -1,
     "Neutral": 0,
     "Support": 1,
-    "strongSupport": 2
+    "Strong Support": 2
 }
 topic = {}
 opinion = {}
