@@ -12,7 +12,7 @@ root.minsize(height=540, width=960)
 # chat_btn = PhotoImage(file="image needed here")
 # img_label = Label(image=chat_btn)
 # img_label.pack(pady=5, padx=10)
-issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Taxes", "Vaccines"]
+issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Increased Taxes", "Vaccines"]
 opinions = ["Strongly Against", "Against", "Neutral", "Support", "Strongly Support"]
 topic = {}
 opinion = {}
@@ -79,9 +79,9 @@ def start():
                                   command=lambda: opinionTab(topic[0]))
         cancelChat.place(x=0, y=0)
 
-        cancelChat = Button(waitingFrame, text="Skip", padx=10, pady=5, fg="white", bg="#cf9fff",
+        goBack = Button(waitingFrame, text="Skip", padx=10, pady=5, fg="white", bg="#cf9fff",
                             command=lambda: createChat(waitingFrame))
-        cancelChat.place(x=500, y=500)
+        goBack.place(x=500, y=500)
 
     def createChat(frame3):
         frame3.destroy()
@@ -130,12 +130,12 @@ def start():
         def recieveMessage(message):
             messageDisplay.insert(END, "\n" + "put other person's opinion here" + ": " + message)
 
-    polarity = PhotoImage(file=r'../polarity/resources/polarity font.png')
-    logo = Button(root, highlightthickness=0, bd=0, image=polarity)
-    logo.place(x=250, y=280)
-
     frame = tk.Frame(root, bg="white")
     frame.place(relwidth=1, relheight=1)
+
+    polarity = PhotoImage(file=r'..\polarity\resources\polarity_font1.png')
+    logo = Button(frame, highlightthickness=0, bd=0, image=polarity)
+    logo.place(x=250, y=280)
 
     label1 = Label(frame, text="Welcome to polarity!"
                   , font=("Helvetica", 20), fg="#cf9fff", bg="white")
