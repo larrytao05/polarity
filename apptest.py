@@ -3,6 +3,7 @@ from tkinter import filedialog, Text
 from tkinter import *
 import pygame
 import os
+import WebSocket
 from colour import Color
 
 root = Tk()
@@ -14,6 +15,13 @@ root.minsize(height=540, width=960)
 # img_label.pack(pady=5, padx=10)
 issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Taxes", "Vaccines"]
 opinions = ["Strongly Against", "Against", "Neutral", "Support", "Strongly Support"]
+numberValues = {
+    "Strongly Against": -2,
+    "Against": -1,
+    "Neutral": 0,
+    "Support": 1,
+    "Strongly Support": 2
+}
 topic = {}
 opinion = {}
 messages = []
@@ -67,6 +75,16 @@ def start():
 
 
     def waitingScreen(oldFrame, currentOpinion):
+        WebSocket.send({
+            "className": "SetPreferenceEvent",
+            "topic": topic[0],
+            "preference": numberValues[currentOpinion],
+        })
+        WebSocket.send({
+            "className": "StartChatEvent",
+            "topic": topic[0],
+        })
+
         opinion[0] = currentOpinion
         oldFrame.destroy()
 
@@ -79,13 +97,15 @@ def start():
                                   command=lambda: opinionTab(topic[0]))
         cancelChat.place(x=0, y=0)
 
-        cancelChat = Button(waitingFrame, text="Skip", padx=10, pady=5, fg="white", bg="#cf9fff",
-                            command=lambda: createChat(waitingFrame))
-        cancelChat.place(x=500, y=500)
+        def changeToChat(Content):
+            waitingFrame.destroy()
+            createChat(Content)
 
-    def createChat(frame3):
-        frame3.destroy()
+        WebSocket.bindToEvent("ReceiveMessageEvent", changeToChat)
 
+
+
+    def createChat(Content):
         chatFrame = Frame(root, bg="white")
         chatFrame.place(relwidth=1, relheight=1)
 
@@ -113,6 +133,10 @@ def start():
             input = enterChat.get("1.0", "end-1c")
             messages.append(input)
             enterChat.delete("1.0", END)
+            WebSocket.send({
+                "className": "SendMessageEvent",
+                "message": input,
+            })
             displayMessage(len(messages) - 1, messageDisplay)
 
         root.bind("<Return>", retrieve_input)
@@ -121,14 +145,23 @@ def start():
             textBox.insert(END, "\nYou: " + messages[index])
 
         def newConversation(event):
+            WebSocket.send({
+                "className": "LeaveChatEvent",
+            })
             waitingScreen(chatFrame, opinion[0])
 
+        def recieveMessage(Content):
+            message = Content["message"]
+            sender = Content["sender"]
+
+            messageDisplay.insert(END, sender + ": " + message)
+
         root.bind("<Delete>", newConversation)
+        WebSocket.bindToEvent("RoomClosedEvent", newConversation)
+        WebSocket.bindToEvent("ReceiveMessageEvent", recieveMessage)
 
-       # def sendMessage():
+        # def sendMessage():
 
-        def recieveMessage(message):
-            messageDisplay.insert(END, "\n" + "put other person's opinion here" + ": " + message)
 
     polarity = PhotoImage(file=r'../polarity/resources/polarity font.png')
     logo = Button(root, highlightthickness=0, bd=0, image=polarity)
