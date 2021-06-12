@@ -10,7 +10,6 @@ from tkinter import Tk, Label
 from PIL import ImageTk, Image
 from pathlib import Path
 
-
 root = Tk()
 root.title('polarity')
 root.iconbitmap(r'../polarity/resources/p.ico')
@@ -32,7 +31,6 @@ messageRecieved = False
 
 
 def start():
-
     def stream():
         try:
             image = video.get_next_data()
@@ -188,43 +186,38 @@ def start():
 
 
 
-    polarity = PhotoImage(file=r'../polarity/resources/polarity_font.png')
-    logo = Button(root, highlightthickness=0, bd=0, image=polarity)
-    logo.place(x=250, y=280)
 
     frame = tk.Frame(root, bg="white")
     frame.place(relwidth=1, relheight=1)
     frame.tkraise()
 
-    label1 = Label(frame, text="Welcome to polarity!"
-                  , font=("Helvetica", 20), fg="#cf9fff", bg="white")
-    label1.place(relx=0.36, rely=0.01)
-    label2 = Label(frame, text="We want to bring our nation together through a series of honest discussion and open communication"
-                   , font=("Helvetica", 15), fg="#cf9fff", bg="white")
-    label2.place(relx=0.042, rely=0.08)
-    label3 = Label(frame, text="Please select a current event or political issue to get started!"
-                   , font=("Helvetica", 15), fg="#cf9fff", bg="white")
-    label3.place(relx=0.22, rely=0.15)
+    polarity = PhotoImage(file=r'../polarity/resources/polarity_font1.png')
+    logo = Label(frame, highlightthickness=0, bd=0, image=polarity)
+    logo.place(x=(960/2)-(431/2), rely=0)
+
+    label1 = Label(frame, text="Current Discussion Topics:",
+                   font=("Helvetica", 20), fg="#cf9fff", bg="white", anchor=N)
+    label1.place(relx=0.5, y=350)
 
     issue1 = PhotoImage(file=r'../polarity/resources/babies.png')
     abortion = Button(root, highlightthickness=0, bd=0, image=issue1, command=lambda: opinionTab(issues[0]))
-    abortion.place(x=(570 - (len(issues) * 150) + (1 * 195)), y=200)
+    abortion.place(x=(570 - (len(issues) * 150) + (1 * 195)), y=400)
 
     issue2 = PhotoImage(file=r'../polarity/resources/guns.png')
     guns = Button(root, highlightthickness=0, bd=0, image=issue2, command=lambda: opinionTab(issues[1]))
-    guns.place(x=(570 - (len(issues) * 150) + (2 * 195)), y=200)
+    guns.place(x=(570 - (len(issues) * 150) + (2 * 195)), y=400)
 
     issue3 = PhotoImage(file=r'../polarity/resources/lgbt.png')
     lgbt = Button(root, highlightthickness=0, bd=0, image=issue3, command=lambda: opinionTab(issues[2]))
-    lgbt.place(x=(570 - (len(issues) * 150) + (3 * 195)), y=200)
+    lgbt.place(x=(570 - (len(issues) * 150) + (3 * 195)), y=400)
 
     issue4 = PhotoImage(file=r'../polarity/resources/tax.png')
     tax = Button(root, highlightthickness=0, bd=0, image=issue4, command=lambda: opinionTab(issues[3]))
-    tax.place(x=(570 - (len(issues) * 150) + (4 * 195)), y=200)
+    tax.place(x=(570 - (len(issues) * 150) + (4 * 195)), y=400)
 
     issue5 = PhotoImage(file=r'../polarity/resources/vaccines.png')
     vaccines = Button(root, highlightthickness=0, bd=0, image=issue5, command=lambda: opinionTab(issues[4]))
-    vaccines.place(x=(570 - (len(issues) * 150) + (5 * 195)), y=200)
+    vaccines.place(x=(570 - (len(issues) * 150) + (5 * 195)), y=400)
 
     mainloop()
     #stream()
