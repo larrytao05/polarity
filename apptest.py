@@ -10,7 +10,6 @@ from tkinter import Tk, Label
 from PIL import ImageTk, Image
 from pathlib import Path
 
-
 root = Tk()
 root.title('polarity')
 root.iconbitmap(r'../polarity/resources/p.ico')
@@ -32,7 +31,6 @@ messageRecieved = False
 
 
 def start():
-
     def stream():
         try:
             image = video.get_next_data()
