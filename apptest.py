@@ -10,10 +10,7 @@ root = Tk()
 root.title('polarity')
 root.iconbitmap(r'../polarity/resources/p.ico')
 root.minsize(height=540, width=960)
-# chat_btn = PhotoImage(file="image needed here")
-# img_label = Label(image=chat_btn)
-# img_label.pack(pady=5, padx=10)
-issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Taxes", "Vaccines"]
+issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Tax Increases", "Vaccines"]
 opinions = ["Strongly Against", "Against", "Neutral", "Support", "Strongly Support"]
 numberValues = {
     "Strongly Against": -2,
