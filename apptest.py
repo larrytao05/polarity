@@ -163,7 +163,7 @@ def start():
         # def sendMessage():
 
 
-    polarity = PhotoImage(file=r'../polarity/resources/polarity font.png')
+    polarity = PhotoImage(file=r'../polarity/resources/polarity_font.png')
     logo = Button(root, highlightthickness=0, bd=0, image=polarity)
     logo.place(x=250, y=280)
 
