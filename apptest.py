@@ -7,7 +7,7 @@ from colour import Color
 
 root = Tk()
 root.title('polarity')
-root.iconbitmap(r'..\polarity\resources\p.ico')
+root.iconbitmap(r'../polarity/resources/p.ico')
 root.minsize(height=540, width=960)
 # chat_btn = PhotoImage(file="image needed here")
 # img_label = Label(image=chat_btn)
@@ -31,27 +31,27 @@ def start():
         n=0
 
         opinionlabel = Label(frame1, text="What Are Your Opinions on "+topic[0]+":", font=("Helvetica", 20,), fg="#cf9fff", bg="white")
-        photo1 = PhotoImage(file=r'..\polarity\resources\button (1).png')
+        photo1 = PhotoImage(file=r'../polarity/resources/button (1).png')
         strongAgainst = Button(root, highlightthickness=0, bd=0, image=photo1,
                                command=lambda: waitingScreen(frame1, opinions[0]))
         strongAgainst.place(x=40, y=200)
 
-        photo2 = PhotoImage(file=r'..\polarity\resources\button (2).png')
+        photo2 = PhotoImage(file=r'../polarity/resources/button (2).png')
         against = Button(root, highlightthickness=0, bd=0, image=photo2,
                          command=lambda: waitingScreen(frame1, opinions[1]))
         against.place(x=40 + (180 * 1), y=200)
 
-        photo3 = PhotoImage(file=r'..\polarity\resources\button (3).png')
+        photo3 = PhotoImage(file=r'../polarity/resources/button (3).png')
         neutral = Button(root, highlightthickness=0, bd=0, image=photo3,
                          command=lambda: waitingScreen(frame1, opinions[2]))
         neutral.place(x=40 + (180 * 2), y=200)
 
-        photo4 = PhotoImage(file=r'..\polarity\resources\button (4).png')
+        photo4 = PhotoImage(file=r'../polarity/resources/button (4).png')
         support = Button(root, highlightthickness=0, bd=0, image=photo4,
                          command=lambda: waitingScreen(frame1, opinions[3]))
         support.place(x=40 + (180 * 3), y=200)
 
-        photo5 = PhotoImage(file=r'..\polarity\resources\button (5).png')
+        photo5 = PhotoImage(file=r'../polarity/resources/button (5).png')
         strongSupport = Button(root, highlightthickness=0, bd=0, image=photo5,
                                command=lambda: waitingScreen(frame1, opinions[4]))
         strongSupport.place(x=40 + (180 * 4), y=200)
@@ -130,7 +130,7 @@ def start():
         def recieveMessage(message):
             messageDisplay.insert(END, "\n" + "put other person's opinion here" + ": " + message)
 
-    polarity = PhotoImage(file=r'..\polarity\resources\polarity font.png')
+    polarity = PhotoImage(file=r'../polarity/resources/polarity font.png')
     logo = Button(root, highlightthickness=0, bd=0, image=polarity)
     logo.place(x=250, y=280)
 
@@ -147,23 +147,23 @@ def start():
                    , font=("Helvetica", 15), fg="#cf9fff", bg="white")
     label3.place(relx=0.22, rely=0.15)
 
-    issue1 = PhotoImage(file=r'..\polarity\resources\babies.png')
+    issue1 = PhotoImage(file=r'../polarity/resources/babies.png')
     abortion = Button(root, highlightthickness=0, bd=0, image=issue1, command=lambda: opinionTab(issues[0]))
     abortion.place(x=(570 - (len(issues) * 150) + (1 * 195)), y=200)
 
-    issue2 = PhotoImage(file=r'..\polarity\resources\guns.png')
+    issue2 = PhotoImage(file=r'../polarity/resources/guns.png')
     guns = Button(root, highlightthickness=0, bd=0, image=issue2, command=lambda: opinionTab(issues[1]))
     guns.place(x=(570 - (len(issues) * 150) + (2 * 195)), y=200)
 
-    issue3 = PhotoImage(file=r'..\polarity\resources\lgbt.png')
+    issue3 = PhotoImage(file=r'../polarity/resources/lgbt.png')
     lgbt = Button(root, highlightthickness=0, bd=0, image=issue3, command=lambda: opinionTab(issues[2]))
     lgbt.place(x=(570 - (len(issues) * 150) + (3 * 195)), y=200)
 
-    issue4 = PhotoImage(file=r'..\polarity\resources\tax.png')
+    issue4 = PhotoImage(file=r'../polarity/resources/tax.png')
     tax = Button(root, highlightthickness=0, bd=0, image=issue4, command=lambda: opinionTab(issues[3]))
     tax.place(x=(570 - (len(issues) * 150) + (4 * 195)), y=200)
 
-    issue5 = PhotoImage(file=r'..\polarity\resources\vaccines.png')
+    issue5 = PhotoImage(file=r'../polarity/resources/vaccines.png')
     vaccines = Button(root, highlightthickness=0, bd=0, image=issue5, command=lambda: opinionTab(issues[4]))
     vaccines.place(x=(570 - (len(issues) * 150) + (5 * 195)), y=200)
 

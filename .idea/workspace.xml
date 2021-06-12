@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+    <list default="true" id="210b0745-619a-418d-b981-c777fb105e0b" name="Default Changelist" comment="Added websocket and test">
+    <list default="true" id="87541689-b3f9-4394-ac19-7252e20ad2c5" name="Default Changelist" comment="updates to the websocket">
     <list default="true" id="210b0745-619a-418d-b981-c777fb105e0b" name="Default Changelist" comment="second commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apptest.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,5 +125,7 @@
     <MESSAGE value="Added websocket and test" />
     <MESSAGE value="second commit" />
     <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="updates to the websocket" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates to the websocket" />
   </component>
 </project>

@@ -13,7 +13,6 @@ def sendChat(Message):
     print("You: " + Message)
     WebSocket.send({
         "className": "SendMessageEvent",
-        "sender": "user2",
         "message": "Hello, world!"
     })
 
