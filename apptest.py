@@ -16,11 +16,11 @@ root.minsize(height=540, width=960)
 issues = ["Abortion", "Gun Ownership", "LGBTQ Rights", "Taxes", "Vaccines"]
 opinions = ["Strongly Against", "Against", "Neutral", "Support", "Strongly Support"]
 numberValues = {
-    "Strongly Against": -2,
+    "strongAgainst": -2,
     "Against": -1,
     "Neutral": 0,
     "Support": 1,
-    "Strongly Support": 2
+    "strongSupport": 2
 }
 topic = {}
 opinion = {}
@@ -40,9 +40,9 @@ def start():
 
         opinionlabel = Label(frame1, text="What Are Your Opinions on "+topic[0]+":", font=("Helvetica", 20,), fg="#cf9fff", bg="white")
         photo1 = PhotoImage(file=r'../polarity/resources/button (1).png')
-        strongAgainst = Button(root, highlightthickness=0, bd=0, image=photo1,
+        neutral = Button(root, highlightthickness=0, bd=0, image=photo1,
                                command=lambda: waitingScreen(frame1, opinions[0]))
-        strongAgainst.place(x=40, y=200)
+        neutral.place(x=40, y=200)
 
         photo2 = PhotoImage(file=r'../polarity/resources/button (2).png')
         against = Button(root, highlightthickness=0, bd=0, image=photo2,
@@ -50,19 +50,19 @@ def start():
         against.place(x=40 + (180 * 1), y=200)
 
         photo3 = PhotoImage(file=r'../polarity/resources/button (3).png')
-        neutral = Button(root, highlightthickness=0, bd=0, image=photo3,
+        support = Button(root, highlightthickness=0, bd=0, image=photo3,
                          command=lambda: waitingScreen(frame1, opinions[2]))
-        neutral.place(x=40 + (180 * 2), y=200)
+        support.place(x=40 + (180 * 2), y=200)
 
         photo4 = PhotoImage(file=r'../polarity/resources/button (4).png')
-        support = Button(root, highlightthickness=0, bd=0, image=photo4,
+        strongSupport = Button(root, highlightthickness=0, bd=0, image=photo4,
                          command=lambda: waitingScreen(frame1, opinions[3]))
-        support.place(x=40 + (180 * 3), y=200)
+        strongSupport.place(x=40 + (180 * 3), y=200)
 
         photo5 = PhotoImage(file=r'../polarity/resources/button (5).png')
-        strongSupport = Button(root, highlightthickness=0, bd=0, image=photo5,
+        strongAgainst = Button(root, highlightthickness=0, bd=0, image=photo5,
                                command=lambda: waitingScreen(frame1, opinions[4]))
-        strongSupport.place(x=40 + (180 * 4), y=200)
+        strongAgainst.place(x=40 + (180 * 4), y=200)
 
 
 
@@ -101,7 +101,7 @@ def start():
             waitingFrame.destroy()
             createChat(Content)
 
-        WebSocket.bindToEvent("ReceiveMessageEvent", changeToChat)
+        WebSocket.bindToEvent("JoinedRoomEvent", changeToChat)
 
 
 
