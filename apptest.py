@@ -124,8 +124,12 @@ def start():
         def newConversation(event):
             waitingScreen(chatFrame, opinion[0])
 
-        root.bind("<BackSpace>", newConversation)
-    # def sendMessage():
+        root.bind("<Delete>", newConversation)
+
+       # def sendMessage():
+
+        def recieveMessage(message):
+            messageDisplay.insert(END, "\n" + "put other person's opinion here" + ": " + message)
 
     polarity = PhotoImage(file=r"C:\Users\Larry\PycharmProjects\polarity\resources\polarity font.png")
     logo = Button(root, highlightthickness=0, bd=0, image=polarity)
