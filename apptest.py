@@ -62,7 +62,7 @@ def start():
         opinionlabel = Label(frame1, text="What Are Your Opinions on "+topic[0]+":", font=("Helvetica", 20,), fg="#cf9fff", bg="white",)
         photo5 = PhotoImage(file=r'resources/button (1).png')
         strongAgainst = Button(root, highlightthickness=0, bd=0, image=photo5,
-                               command=lambda: waitingScreen(frame1, opinions[4]))
+                               command=lambda: waitingScreen(frame1, opinions[0]))
         strongAgainst.place(x=40, y=200)
 
         photo2 = PhotoImage(file=r'../polarity/resources/button (2).png')
@@ -71,18 +71,18 @@ def start():
         against.place(x=40 + (180 * 1), y=200)
 
         photo1 = PhotoImage(file=r'resources/button (3).png')
-        neutral = Button(root, highlightthickness=0, bd=0, image=photo1, command=lambda: waitingScreen(frame1, opinions[0]))
+        neutral = Button(root, highlightthickness=0, bd=0, image=photo1, command=lambda: waitingScreen(frame1, opinions[2]))
         neutral.place(x=40 + (180 * 2), y=200)
 
         photo3 = PhotoImage(file=r'resources/button (4).png')
         support = Button(root, highlightthickness=0, bd=0, image=photo3,
-                         command=lambda: waitingScreen(frame1, opinions[2]))
+                         command=lambda: waitingScreen(frame1, opinions[3]))
         support.place(x=40 + (180 * 3), y=200)
 
 
         photo4 = PhotoImage(file=r'resources/button (5).png')
         strongSupport = Button(root, highlightthickness=0, bd=0, image=photo4,
-                         command=lambda: waitingScreen(frame1, opinions[3]))
+                         command=lambda: waitingScreen(frame1, opinions[4]))
         strongSupport.place(x=40 + (180 * 4), y=200)
 
 
@@ -144,9 +144,10 @@ def start():
 
         messageDisplay = Text(chatFrame, width=75, height=20, fg="white", bg="#cf9fff")
         messageDisplay.place(relx=0.5, rely=0.5, anchor='center', width=300, height=350)
+        messageDisplay.config(state=DISABLED)
 
         scrollBar = Scrollbar(chatFrame, command=messageDisplay.yview)
-        scrollBar.place(relx=0.5, rely=0.5, anchor='center', x=150, y=0, height=350)
+        scrollBar.place(relx=0.5, rely=0.5, anchor='center', x=160, y=0, height=350)
 
         messageDisplay.configure(yscrollcommand = scrollBar.set)
 
@@ -163,7 +164,8 @@ def start():
         root.bind("<Return>", retrieve_input)
 
         def displayMessage(index, textBox):
-            textBox.insert(END, "\nYou: " + messages[index])
+            messageDisplay.config(state=NORMAL)
+            textBox.insert(END, "You: " + messages[index])
 
         def newConversation(event):
             WebSocket.send({
