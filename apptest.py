@@ -5,6 +5,11 @@ import pygame
 import os
 import WebSocket
 from colour import Color
+import imageio
+from tkinter import Tk, Label
+from PIL import ImageTk, Image
+from pathlib import Path
+
 
 root = Tk()
 root.title('polarity')
@@ -25,8 +30,27 @@ messages = []
 messageRecieved = False
 
 
+
 def start():
 
+    def stream():
+        try:
+            image = video.get_next_data()
+            frame_image = Image.fromarray(image)
+            frame_image = ImageTk.PhotoImage(frame_image)
+            l1.config(image=frame_image)
+            l1.image = frame_image
+            l1.after(delay, lambda: stream())
+        except:
+            video.close()
+            return
+    f1 = Frame()
+    l1 = Label(f1)
+    l1.pack()
+    f1.pack()
+    video_name = r'../polarity/resources/2021-06-12 14-52-02.mp4'  # Image-path
+    video = imageio.get_reader(video_name)
+    delay = int(100 / video.get_meta_data()['fps'])
     def opinionTab(currentTopic):
         topic[0] = currentTopic
         # we need to have the code recognize the user choice for topic and then have that be stored in the "topic" variable
@@ -160,12 +184,15 @@ def start():
         # def sendMessage():
 
 
+
+
     polarity = PhotoImage(file=r'../polarity/resources/polarity_font.png')
     logo = Button(root, highlightthickness=0, bd=0, image=polarity)
     logo.place(x=250, y=280)
 
     frame = tk.Frame(root, bg="white")
     frame.place(relwidth=1, relheight=1)
+    frame.tkraise()
 
     label1 = Label(frame, text="Welcome to polarity!"
                   , font=("Helvetica", 20), fg="#cf9fff", bg="white")
@@ -198,7 +225,8 @@ def start():
     vaccines.place(x=(570 - (len(issues) * 150) + (5 * 195)), y=200)
 
     mainloop()
-
+    #stream()
 
 start()
+
 root.mainloop()
