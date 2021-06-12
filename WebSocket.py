@@ -4,10 +4,11 @@ import socket
 from threading import Thread
 
 Address = ("localhost", 16568)
-HeaderSize = 10
+Headersize = 10
 WebSocket = socket.socket()
 Running = True
 Binds = {}
+
 
 class myThread(Thread):
     def __init__(self):
@@ -45,7 +46,7 @@ def bindToEvent(EventName, Function):
 
 def formatForSending(Text):
     Header = str(len(Text))
-    Header = Header + ("-" * (HeaderSize - len(Header)))
+    Header = Header + ("-" * (Headersize - len(Header)))
 
     CombinedText = Header + Text
 
@@ -54,14 +55,24 @@ def formatForSending(Text):
 
 async def sendAysnc(Dictionary):
     Text = covertToJson(Dictionary)
-    FormattedMessage = formatForSending(Text)
+    FormatedMessage = formatForSending(Text)
 
-    print(FormattedMessage)
-    WebSocket.send(FormattedMessage)
+    print(FormatedMessage)
+    WebSocket.send(FormatedMessage)
+
+
+def get_or_create_eventloop():
+    try:
+        return asyncio.get_event_loop()
+    except RuntimeError as ex:
+        if "There is no current event loop in thread" in str(ex):
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            return asyncio.get_event_loop()
 
 
 def send(Dictionary):
-    asyncio.get_event_loop().run_until_complete(sendAysnc(Dictionary))
+    get_or_create_eventloop().run_until_complete(sendAysnc(Dictionary))
 
 
 def connect():
@@ -72,5 +83,5 @@ def connect():
 def close():
     WebSocket.close()
 
-# Main
+
 connect()
