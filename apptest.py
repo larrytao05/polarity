@@ -120,9 +120,10 @@ def start():
 
         messageDisplay = Text(chatFrame, width=75, height=20, fg="white", bg="#cf9fff")
         messageDisplay.place(relx=0.5, rely=0.5, anchor='center', width=300, height=350)
+        messageDisplay.config(state=DISABLED)
 
         scrollBar = Scrollbar(chatFrame, command=messageDisplay.yview)
-        scrollBar.place(relx=0.5, rely=0.5, anchor='center', x=150, y=0, height=350)
+        scrollBar.place(relx=0.5, rely=0.5, anchor='center', x=160, y=0, height=350)
 
         messageDisplay.configure(yscrollcommand = scrollBar.set)
 
@@ -139,6 +140,7 @@ def start():
         root.bind("<Return>", retrieve_input)
 
         def displayMessage(index, textBox):
+            messageDisplay.config(state=NORMAL)
             textBox.insert(END, "You: " + messages[index])
 
         def newConversation(event):
